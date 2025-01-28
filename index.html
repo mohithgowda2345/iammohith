@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Page Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      background-color: #016CAB;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .form-group button:hover {
+      background-color: #014f7a;
+    }
+
+    .profile {
+      text-align: center;
+    }
+
+    .profile p {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="login-page">
+    <h2>Login</h2>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter Username">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter Password">
+    </div>
+    <div class="form-group">
+      <button onclick="goToRegistrationPage()">Sign In</button>
+    </div>
+  </div>
+
+  <div class="container" id="registration-page" style="display: none;">
+    <h2>Registration</h2>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Enter Name">
+    </div>
+    <div class="form-group">
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter Email">
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" placeholder="Enter Phone Number">
+    </div>
+    <div class="form-group">
+      <button onclick="goToProfilePage()">Submit</button>
+    </div>
+  </div>
+
+  <div class="container" id="profile-page" style="display: none;">
+    <h2>Profile</h2>
+    <div class="profile">
+      <p><strong>Name:</strong> <span id="profile-name"></span></p>
+      <p><strong>Date of Birth:</strong> <span id="profile-dob"></span></p>
+      <p><strong>Email:</strong> <span id="profile-email"></span></p>
+      <p><strong>Phone:</strong> <span id="profile-phone"></span></p>
+    </div>
+  </div>
+
+  <script>
+    function goToRegistrationPage() {
+      document.getElementById('login-page').style.display = 'none';
+      document.getElementById('registration-page').style.display = 'block';
+    }
+
+    function goToProfilePage() {
+      const name = document.getElementById('name').value;
+      const dob = document.getElementById('dob').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+
+      // Set profile data
+      document.getElementById('profile-name').textContent = name;
+      document.getElementById('profile-dob').textContent = dob;
+      document.getElementById('profile-email').textContent = email;
+      document.getElementById('profile-phone').textContent = phone;
+
+      // Switch to profile page
+      document.getElementById('registration-page').style.display = 'none';
+      document.getElementById('profile-page').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
